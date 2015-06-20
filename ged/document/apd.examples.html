@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Comment utiliser APD dans vos scripts ?</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta name="keywords" content="0000,0005,0009,05b,100,22141,affichage,afficher,ajouter,analyse,apd,apd_pprof_trace,apd_set_pprof_trace,appel,appelez,application,arbre,array,autrement,bash,but,call,calls,cessite,cet,chaque,choix,colonne,commande,commencer,commencez,comment,contenu,crit,cumm,cutez,cution,dan,devrait,donn,dumpdir,dur,elapsed,excl,exemple,ext,fichier,fonction,for,formatt,forme,goulot,home,importe,importer,kcachegrind,ligne,main,maintenant,memory,mener,moyenne,name,nombre,option,options,php,pourra,pourraient,pourrez,pprof,pprof2calltree,pprof_pid,pprofp,preg_replace,premi,profil,profile,real,rer,ressembler,sactivez,script,scripts,secondes,secs,sortie,sous,str_replace,system,table,testapd,time,tmp,total,trace,tracer,tranglement,tre,trie,usage,user,utilis,utiliser">
+<meta name="author" content="Damien Seguy">
+<meta name="site" content="http://www.nexen.net/">
+<meta name="date" content="04/12/2005 08:12:30">
+<STYLE type="text/css">
+  td { font-family: verdana, arial, helvetica, sans-serif, courier; font-size: 12px}
+  a { font-family: verdana, arial, helvetica, sans-serif, courier; font-size: 12px}
+  tt { font-family: verdana, arial, helvetica, sans-serif, courier; font-size: 12px}
+  b { font-family: verdana, arial, helvetica, sans-serif, courier}
+</STYLE>
+</HEAD>
+<BODY BGCOLOR=white>
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=2 CELLSPACING=0>
+<TR>
+<TD WIDTH="20%" BGCOLOR="#EEEEEE"><A HREF="apd.constants.html">Constantes pré-définies<BR>&lt;&lt;&lt;</A></TD>
+<TD WIDTH="60%" ALIGN=CENTER BGCOLOR="#EEEEEE"><B>Comment utiliser APD dans vos scripts ?</B></TD>
+<TD WIDTH="20%" BGCOLOR="#EEEEEE" ALIGN=RIGHT><A HREF="apd.contact.html">Informations de contact<BR>&gt;&gt;&gt;</A></TD>
+</TR>
+</TABLE>
+
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=2 CELLSPACING=0>
+<TR>
+<TD WIDTH="20%" VALIGN=TOP BGCOLOR="#EEEEEE"><HR><A HREF="ref.apd.html"><B>8.2&nbsp;Débogueur avancé pour PHP</B></A><BR>
+<A HREF="funcref.html"><B>8&nbsp;Référence des fonctions</B></A><BR>
+<A HREF="manual.html"><B>&nbsp;Manuel PHP</B></A><BR>
+<HR>.&nbsp;<A HREF="apd.intro.html">Introduction</A><BR>.&nbsp;<A HREF="apd.installation.html">Installation</A><BR>.&nbsp;<A HREF="apd.installwin32.html">Compilation sous un environnement Win32</A><BR>.&nbsp;<A HREF="apd.configuration.html">Configuration à l&#39;exécution</A><BR>.&nbsp;<A HREF="apd.resources.html">Types de ressources</A><BR>.&nbsp;<A HREF="apd.constants.html">Constantes pré-définies</A><BR>-&gt;<B>Comment utiliser APD dans vos scripts ?</B><BR>.&nbsp;<A HREF="apd.contact.html">Informations de contact</A><BR>.&nbsp;<A HREF="function.apd-breakpoint.html">apd_breakpoint</A><BR>.&nbsp;<A HREF="function.apd-callstack.html">apd_callstack</A><BR>.&nbsp;<A HREF="function.apd-clunk.html">apd_clunk</A><BR>.&nbsp;<A HREF="function.apd-continue.html">apd_continue</A><BR>.&nbsp;<A HREF="function.apd-croak.html">apd_croak</A><BR>.&nbsp;<A HREF="function.apd-dump-function-table.html">apd_dump_function_table</A><BR>.&nbsp;<A HREF="function.apd-dump-persistent-resources.html">apd_dump_persistent_resources</A><BR>.&nbsp;<A HREF="function.apd-dump-regular-resources.html">apd_dump_regular_resources</A><BR>.&nbsp;<A HREF="function.apd-echo.html">apd_echo</A><BR>.&nbsp;<A HREF="function.apd-get-active-symbols.html">apd_get_active_symbols</A><BR>.&nbsp;<A HREF="function.apd-set-pprof-trace.html">apd_set_pprof_trace</A><BR>.&nbsp;<A HREF="function.apd-set-session-trace.html">apd_set_session_trace</A><BR>.&nbsp;<A HREF="function.apd-set-session.html">apd_set_session</A><BR>.&nbsp;<A HREF="function.apd-set-socket-session-trace.html">apd_set_socket_session_trace</A><BR>.&nbsp;<A HREF="function.override-function.html">override_function</A><BR>.&nbsp;<A HREF="function.rename-function.html">rename_function</A><BR><HR></TD>
+<TD WIDTH="80%" VALIGN=TOP>
+<P><a name="apd.examples"></a><h3> 8.2.7 Comment utiliser APD dans vos scripts ?</h3><P> <!-- 'procedure' is displayed using default method --> <!-- 'step' is displayed using default method --> 
+<P>
+    A la première ligne de vos scripts PHP, appelez la fonction
+     
+<A HREF="function.apd-pprof-trace.html"><font face="courrier">apd_pprof_trace</font></a>
+   pour commencer la trace :
+   </P>
+ 
+<P>
+<PRE><code><font color="#000000">
+apd_set_pprof_trace();</font>
+</code></PRE>
+</P>
+ 
+<P>
+    Vous pouvez ajouter cette ligne n'importe où dans votre script, mais si vous
+    ne commencez pas à tracer au début de votre script, vous désactivez les
+    données de profil qui pourraient autrement vous mener à un goulot
+    d'étranglement d'exécution.
+   </P>
+<!-- 'step' end -->
+ <!-- 'step' is displayed using default method --> 
+<P>
+    Maintenant, éxécutez votre script. Le contenu de la sortie devrait être
+    écrit dans le fichier  
+<font face="courrier">apd.dumpdir/pprof_pid.ext</font>
+ .
+     
+<font face="courrier">Array</font>
+</P>
+<!-- 'step' end -->
+ <!-- 'step' is displayed using default method --> 
+<P>
+     Pour afficher les données de profile formattées, exécutez la commande
+      
+<font face="courrier">pprofp</font>
+  avec les options de trie et d'affichage de votre
+     choix. L'affichage formattée pourra ressembler à cela :
+      
+<font face="courrier"><br />
+bash-2.05b&#36; pprofp -R /tmp/pprof.22141.0<br />
+<br />
+Trace for /home/dan/testapd.php<br />
+Total Elapsed Time = 0.00<br />
+Total System Time  = 0.00<br />
+Total User Time    = 0.00<br />
+<br />
+<br />
+Real         User        System             secs/    cumm<br />
+%Time (excl/cumm)  (excl/cumm)  (excl/cumm) Calls    call    s/call  Memory Usage Name<br />
+--------------------------------------------------------------------------------------<br />
+100.0 0.00 0.00  0.00 0.00  0.00 0.00     1  0.0000   0.0009            0 main<br />
+56.9 0.00 0.00  0.00 0.00  0.00 0.00     1  0.0005   0.0005            0 apd_set_pprof_trace<br />
+28.0 0.00 0.00  0.00 0.00  0.00 0.00    10  0.0000   0.0000            0 preg_replace<br />
+14.3 0.00 0.00  0.00 0.00  0.00 0.00    10  0.0000   0.0000            0 str_replace<br />
+     </font>
+</P>
+ 
+<P>
+     L'option -R utilisée dans cet exemple trie la table de profil par la durée
+     réelle qu'une fonction donnée coûte au script. La colonne "cumm call"
+     révèle le nombre d'appel de chaque fonction et la colonne
+     "s/call", le nombre de secondes chaque appel à la fonction nécessite, en
+     moyenne.
+    </P>
+<!-- 'step' end -->
+ <!-- 'step' is displayed using default method --> 
+<P>
+      Pour générer un fichier d'appel sous forme d'arbre que vous pourrez
+      importer dans l'application KCacheGrind (application d'analyse de
+      profile), exécutez la commande  
+<font face="courrier">pprof2calltree</font>
+ .
+     </P>
+<!-- 'step' end -->
+<!-- 'procedure' end -->
+</P>
+</TD>
+</TR>
+</TABLE>
+
+<TABLE WIDTH="100%" BORDER=0 CELLPADDING=2 CELLSPACING=0>
+<TR>
+<TD WIDTH="20%" BGCOLOR="#EEEEEE"><A HREF="apd.constants.html">&lt;&lt;</A></TD>
+<TD WIDTH="60%" ALIGN=CENTER BGCOLOR="#EEEEEE"><B>Comment utiliser APD dans vos scripts ?</B></TD>
+<TD WIDTH="20%" ALIGN=RIGHT BGCOLOR="#EEEEEE"><A HREF="apd.contact.html">&gt;&gt;</A></TD>
+</TR>
+<TR>
+<TD WIDTH="20%" BGCOLOR="#EEEEEE"><A HREF="apd.constants.html">Constantes pré-définies</A></TD>
+<TD WIDTH="60%" ALIGN=CENTER BGCOLOR="#EEEEEE"><A HREF="ref.apd.html">Débogueur avancé pour PHP</A></TD>
+<TD WIDTH="20%" ALIGN=RIGHT BGCOLOR="#EEEEEE"><A HREF="apd.contact.html">Informations de contact</A></TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

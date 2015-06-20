@@ -1,0 +1,14 @@
+[sesameflow]
+typebd=mysql
+hotebd=localhost
+userbd=root
+pwdbd=
+nombd=bdsesameflow
+hotesite=localhost
+portsite=80
+listlimit=5
+uniteduree_process=3
+uniteduree_circuit=1
+uniteduree_tache=3
+notifmail=0
+
